@@ -19,6 +19,7 @@ class Posts::IndexPage < MainLayout
       @posts.each do |post|
         li do
           link post.title, Posts::Show.with(post)
+          raw Markd.to_html(post.content)
         end
       end
     end

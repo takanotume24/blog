@@ -4,6 +4,7 @@ class Me::ShowPage < MainLayout
     if user
       h1 "This is your profile"
       h3 "Email:  #{user.email}"
+      link "New Post", to: Posts::New
     end
     list_posts
   end

@@ -7,7 +7,9 @@ class Posts::ShowPage < MainLayout
   def content
     user = @current_user
 
-    link "Back to all Posts", Posts::Index
+    para do
+      link "Back to all Posts", Posts::Index
+    end
     h1 @post.title
 
     if user
