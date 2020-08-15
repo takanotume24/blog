@@ -1,10 +1,12 @@
+require "markd"
+
 class Posts::ShowPage < MainLayout
   needs post : Post
   quick_def page_title, "Post with id: #{@post.id}"
 
   def content
     link "Back to all Posts", Posts::Index
-    h1 "Post with id: #{@post.id}"
+    h1 @post.title
     render_actions
     render_post_fields
   end
@@ -20,15 +22,6 @@ class Posts::ShowPage < MainLayout
   end
 
   def render_post_fields
-    ul do
-      li do
-        text "title: "
-        strong @post.title.to_s
-      end
-      li do
-        text "content: "
-        strong @post.content.to_s
-      end
-    end
+    raw Markd.to_html @post.content.to_s
   end
 end

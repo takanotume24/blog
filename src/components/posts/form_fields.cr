@@ -3,6 +3,6 @@ class Posts::FormFields < BaseComponent
 
   def render
     mount Shared::Field.new(operation.title), &.text_input(autofocus: "true")
-    mount Shared::Field.new(operation.content)
+    mount Shared::Field.new(operation.content), &.textarea
   end
 end
