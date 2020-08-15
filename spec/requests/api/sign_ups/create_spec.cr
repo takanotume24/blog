@@ -6,7 +6,7 @@ describe Api::SignUps::Create do
       response = AppClient.exec(Api::SignUps::Create, user: valid_params)
 
       response.should send_json(200, token: "fake-token")
-      new_user = UserQuery.first
+      new_user = UserQuery.new.first?
       new_user.email.should eq(valid_params[:email])
     end
   end

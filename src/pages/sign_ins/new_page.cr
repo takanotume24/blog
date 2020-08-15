@@ -7,13 +7,18 @@ class SignIns::NewPage < AuthLayout
   end
 
   private def render_sign_in_form(op)
+    admin_exist = UserQuery.new.first?
+
     form_for SignIns::Create do
       sign_in_fields(op)
       submit "Sign In", flow_id: "sign-in-button"
     end
+
     link "Reset password", to: PasswordResetRequests::New
-    text " | "
-    link "Sign up", to: SignUps::New
+    if !admin_exist
+      text " | "
+      link "Sign up", to: SignUps::New
+    end
   end
 
   private def sign_in_fields(op)

@@ -3,8 +3,14 @@ class Posts::IndexPage < MainLayout
   quick_def page_title, "All Posts"
 
   def content
+    user = @current_user
+
     h1 "All Posts"
-    link "New Post", to: Posts::New
+    
+    if user
+      link "New Post", to: Posts::New
+    end
+    
     render_posts
   end
 

@@ -5,9 +5,15 @@ class Posts::ShowPage < MainLayout
   quick_def page_title, "Post with id: #{@post.id}"
 
   def content
+    user = @current_user
+
     link "Back to all Posts", Posts::Index
     h1 @post.title
-    render_actions
+    
+    if user
+      render_actions
+    end
+    
     render_post_fields
   end
 
