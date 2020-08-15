@@ -29,5 +29,5 @@ dependencies:
   jwt:
     github: crystal-community/jwt
     version: ~> 1.4.2
-  markd:
-    github: icyleaf/markd
+  front-matter-markd:
+    github: takanotume24/front-matter-markd

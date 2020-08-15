@@ -48,6 +48,6 @@ class Posts::ShowPage < MainLayout
         end
       end
     end
-    raw Markd.to_html @post.content.to_s
+    raw FrontMatterMarkd.to_html @post.content.to_s
   end
 end

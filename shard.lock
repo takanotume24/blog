@@ -44,6 +44,10 @@ shards:
     git: https://github.com/crystal-loot/exception_page.git
     version: 0.1.4
 
+  front-matter-markd:
+    git: https://github.com/takanotume24/front-matter-markd.git
+    version: 0.1.0+git.commit.e0ec526c27372735333434adce2e65ec8c26ed07
+
   future:
     git: https://github.com/crystal-community/future.cr.git
     version: 0.1.0
