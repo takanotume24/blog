@@ -5,20 +5,24 @@ class Me::ShowPage < MainLayout
       h1 "This is your profile"
       h3 "Email:  #{user.email}"
     end
-    helpful_tips
+    list_posts
   end
 
-  private def helpful_tips
-    h3 "Next, you may want to:"
-    ul do
-      li { link_to_authentication_guides }
-      li "Modify this page: src/pages/me/show_page.cr"
-      li "Change where you go after sign in: src/actions/home/index.cr"
+  def list_posts
+    posts = PostQuery.new
+
+    h3 "Posts: #{posts.size}"
+    div do
+      posts.each do |post|
+        ul do
+          li do
+            link post.title, Posts::Show.with(post)
+          end
+          div do
+            raw post.content
+          end
+        end
+      end
     end
-  end
-
-  private def link_to_authentication_guides
-    a "Check out the authentication guides",
-      href: "https://luckyframework.org/guides/authentication"
   end
 end

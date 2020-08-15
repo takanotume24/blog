@@ -9,11 +9,11 @@ class Posts::ShowPage < MainLayout
 
     link "Back to all Posts", Posts::Index
     h1 @post.title
-    
+
     if user
       render_actions
     end
-    
+
     render_post_fields
   end
 
@@ -28,6 +28,24 @@ class Posts::ShowPage < MainLayout
   end
 
   def render_post_fields
+    table do
+      tr do
+        td do
+          text "created_at:"
+        end
+        td do
+          text post.created_at.to_s
+        end
+      end
+      tr do
+        td do
+          text "updated_at:"
+        end
+        td do
+          text post.updated_at.to_s
+        end
+      end
+    end
     raw Markd.to_html @post.content.to_s
   end
 end
