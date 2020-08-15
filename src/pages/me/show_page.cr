@@ -2,8 +2,7 @@ class Me::ShowPage < MainLayout
   def content
     user = @current_user
     if user
-      h1 "This is your profile"
-      h3 "Email:  #{user.email}"
+      h1 "Administration Panel"
       link "New Post", to: Posts::New
     end
     list_posts
